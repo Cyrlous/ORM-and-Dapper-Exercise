@@ -42,6 +42,15 @@ namespace ORM_Dapper
             //call InsertProduct method to insert a new product into products table (uncomment to execute)
             //productRepo.InsertProduct("Orange Juice", 3.00, 10);
             
+            //call the GetProductsByID method to store the product we wish to update and set the update values
+            var productID = 940;
+            var changeProduct = productRepo.GetProductByID(productID);
+            changeProduct.OnSale = true;
+            changeProduct.StockLevel = 500;
+            
+            //call the UpdateProduct method to update our product info in the database
+            productRepo.UpdateProduct(changeProduct);
+            
             //call GetAllProducts method to store all rows from products table into a list
             var products = productRepo.GetAllProducts();
             
@@ -53,6 +62,8 @@ namespace ORM_Dapper
             {
                 Console.WriteLine($"{product.ProductID} - {product.Name}");
             }
+
+            
         }
     }
 }
