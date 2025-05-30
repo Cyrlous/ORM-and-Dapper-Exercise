@@ -42,15 +42,6 @@ namespace ORM_Dapper
             //call InsertProduct method to insert a new product into products table (uncomment to execute)
             //productRepo.InsertProduct("Orange Juice", 3.00, 10);
             
-            //call the GetProductsByID method to store the product we wish to update and set the update values
-            var productID = 940;
-            var changeProduct = productRepo.GetProductByID(productID);
-            changeProduct.OnSale = true;
-            changeProduct.StockLevel = 500;
-            
-            //call the UpdateProduct method to update our product info in the database
-            productRepo.UpdateProduct(changeProduct);
-            
             //call GetAllProducts method to store all rows from products table into a list
             var products = productRepo.GetAllProducts();
             
@@ -62,8 +53,32 @@ namespace ORM_Dapper
             {
                 Console.WriteLine($"{product.ProductID} - {product.Name}");
             }
-
             
+            Console.WriteLine();
+
+            //call the GetProductsByID method to store the product we wish to update and set the update values
+            var productID = 940;
+            var changeProduct = productRepo.GetProductByID(productID);
+            changeProduct.OnSale = true;
+            changeProduct.StockLevel = 500;
+            
+            //call the UpdateProduct method to update our product info in the database (uncomment to Update product)
+            /*productRepo.UpdateProduct(changeProduct);
+            
+            Console.WriteLine("Product updated.  The new values are as follows:");
+            Console.WriteLine("---------------");
+            Console.WriteLine($"Product ID: {changeProduct.ProductID}");
+            Console.WriteLine($"Name: {changeProduct.Name}");
+            Console.WriteLine($"Price : {changeProduct.Price}");
+            Console.WriteLine($"CategoryID: {changeProduct.CategoryID}");
+            Console.WriteLine($"On Sale: {changeProduct.OnSale}");
+            Console.WriteLine($"Stock Level: {changeProduct.StockLevel}");
+            */
+            
+            //call the DeleteProduct method to delete a product (uncomment to delete product)
+            /*productRepo.DeleteProduct(productID);
+            
+            Console.WriteLine($"Product deleted.");*/
         }
     }
 }
